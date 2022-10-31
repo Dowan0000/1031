@@ -7,6 +7,7 @@
 
 AMyGameModeBase::AMyGameModeBase()
 {
+	// StaticClass = Using the Origine from CDO
 	DefaultPawnClass = AMyPawn::StaticClass();
 	PlayerControllerClass = AMyPlayerController::StaticClass();
 }

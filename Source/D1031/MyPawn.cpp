@@ -54,6 +54,7 @@ AMyPawn::AMyPawn()
 	Movement->MaxSpeed = 200.f;
 
 	Arrow = CreateDefaultSubobject<UArrowComponent>(TEXT("Arrow"));
+	Arrow->SetupAttachment(CollisionBox);
 	Arrow->SetRelativeLocation(FVector(100.f, 0.f, 0.f));
 
 }
@@ -112,6 +113,8 @@ void AMyPawn::AccelReleased()
 
 void AMyPawn::Shoot()
 {
-	GetWorld()->SpawnActor<AMyActor>(AMyActor::StaticClass());
+	GetWorld()->SpawnActor<AMyActor>(AMyActor::StaticClass(),
+		Arrow->GetComponentLocation(),
+		Arrow->GetComponentRotation());
 }
 
