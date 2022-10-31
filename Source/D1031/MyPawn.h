@@ -47,6 +47,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
 	class UFloatingPawnMovement* Movement;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
+	class UArrowComponent* Arrow;
+
 	void Pitch(float Value);
 	void Roll(float Value);
 

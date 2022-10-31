@@ -7,6 +7,8 @@
 #include "Camera/CameraComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/FloatingPawnMovement.h"
+#include "MyActor.h"
+#include "Components/ArrowComponent.h"
 
 // Sets default values
 AMyPawn::AMyPawn()
@@ -50,6 +52,10 @@ AMyPawn::AMyPawn()
 	
 	Movement = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Movement"));
 	Movement->MaxSpeed = 200.f;
+
+	Arrow = CreateDefaultSubobject<UArrowComponent>(TEXT("Arrow"));
+	Arrow->SetRelativeLocation(FVector(100.f, 0.f, 0.f));
+
 }
 
 // Called when the game starts or when spawned
@@ -106,6 +112,6 @@ void AMyPawn::AccelReleased()
 
 void AMyPawn::Shoot()
 {
-	
+	GetWorld()->SpawnActor<AMyActor>(AMyActor::StaticClass());
 }
 
